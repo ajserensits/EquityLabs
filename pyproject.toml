@@ -1,0 +1,14 @@
+[build-system]
+requires = []
+build-backend = "equitylab_build"
+backend-path = ["."]
+
+[project]
+name = "equitylab-portable"
+version = "0.1.0"
+description = "A dependency-free local equity valuation and price research tool"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+equitylab = "equitylab.cli:main"

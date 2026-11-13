@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EquityLab Portable</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <p class="eyebrow">LOCAL EQUITY RESEARCH</p>
+      <h1>EquityLab</h1>
+      <p>Exact-decimal valuation scenarios and attributed price history, stored on your machine.</p>
+    </header>
+    <main>
+      <section class="panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">VALUATION</p><h2>Earnings multiple</h2></div>
+          <span class="status" id="api-status">Checking API…</span>
+        </div>
+        <form id="earnings-form" class="grid">
+          <label>Normalized EPS<input name="normalized_eps" value="12.50" required /></label>
+          <label>Fair P/E<input name="fair_pe" value="22" required /></label>
+          <label>Market price<input name="market_price" value="250" /></label>
+          <label>Target price<input name="target_price" value="300" /></label>
+          <button type="submit">Calculate value</button>
+        </form>
+        <pre id="earnings-result" class="result">Enter assumptions and calculate.</pre>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading"><div><p class="eyebrow">VALUATION</p><h2>Equity DCF</h2></div></div>
+        <form id="dcf-form" class="grid">
+          <label>Starting FCFE<input name="starting_fcfe" value="100" required /></label>
+          <label>Annual growth rate<input name="growth_rate" value="0.05" required /></label>
+          <label>Forecast years<select name="forecast_years"><option>5</option><option>10</option></select></label>
+          <label>Discount rate<input name="discount_rate" value="0.10" required /></label>
+          <label>Terminal growth<input name="terminal_growth_rate" value="0.03" required /></label>
+          <label>Non-operating cash<input name="non_operating_cash" value="0" /></label>
+          <label>Debt adjustment<input name="debt_adjustment" value="0" /></label>
+          <label>Diluted shares<input name="diluted_shares" value="50" required /></label>
+          <label>Margin of safety<input name="margin_of_safety" value="0.20" /></label>
+          <label>Market price<input name="market_price" value="30" /></label>
+          <button type="submit">Run DCF</button>
+        </form>
+        <pre id="dcf-result" class="result">Enter assumptions and calculate.</pre>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading"><div><p class="eyebrow">LOCAL DATA</p><h2>Price history</h2></div></div>
+        <form id="price-form" class="grid">
+          <label>Symbol<input name="symbol" value="MCD" required /></label>
+          <label>Source label<input name="source" placeholder="my_vendor_export" required /></label>
+          <label class="wide">CSV file<input name="file" type="file" accept=".csv,text/csv" required /></label>
+          <button type="submit">Import CSV</button>
+        </form>
+        <pre id="price-result" class="result">CSV columns: date, raw_close, adjusted_close, dividend.</pre>
+      </section>
+
+      <section class="roadmap">
+        <p class="eyebrow">ROADMAP</p>
+        <h2>Not implemented yet</h2>
+        <p>Point-in-time historical backtests, benchmark comparisons, SEC ingestion, and financial-health scoring remain future work.</p>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
